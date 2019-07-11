@@ -1,0 +1,345 @@
+@charset "UTF-8";
+@import "compass/css3";
+@import "fonts";
+
+body
+{
+  margin : 0;
+
+  .template-container
+  {
+    width : 100%;
+
+    .content-container
+    {
+      height    : 100%;
+      width     : 1170px;
+      max-width : 1170px;
+      margin    : 0 auto;
+    }
+  }
+
+  .template-container,
+  .content-container
+  {
+    min-width : 1170px;
+  }
+
+  .navigation
+  {
+    position : absolute;
+    z-index  : 3;
+    left     : 0;
+    top      : 18px;
+    color    : #ffffff;
+
+    .content-container
+    {
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(space-between);
+
+      .logo
+      {
+        width            : 200px;
+        height           : 40px;
+        background-image : url(/images/logo.png);
+      }
+
+      nav.menu
+      {
+        @include display-flex;
+        @include align-items(center);
+
+        position : relative;
+        left     : 72px;
+
+        .menu-item
+        {
+          font-family     : 'CeraRoundPro';
+          font-weight     : bold;
+          cursor          : pointer;
+          position        : relative;
+          text-decoration : none;
+          font-size       : 16px;
+          margin-right    : 50px;
+          color           : #ffffff;
+
+          &:last-child
+          {
+            margin-right : 0;
+          }
+
+          &:hover
+          {
+            &:after
+            {
+              @include border-radius(50%);
+
+              position         : absolute;
+              content          : ' ';
+              left             : 50%;
+              width            : 4px;
+              height           : 4px;
+              margin-left      : -2px;
+              bottom           : -8px;
+              background-color : #ffffff;
+            }
+          }
+        }
+      }
+
+      button
+      {
+        @include border-radius(30px);
+        @include transition (background-color 0.4s);
+
+        font-family      : 'CeraRoundPro';
+        font-weight      : bold;
+        background-color : transparent;
+        cursor           : pointer;
+        padding          : 0;
+        font-size        : 16px;
+        width            : 200px;
+        height           : 60px;
+        line-height      : 56px;
+        border           : 2px solid #5489c3;
+        color            : #ffffff;
+
+        &:hover
+        {
+          background-color : #5489c3;
+        }
+
+        &:focus
+        {
+          outline : none;
+        }
+      }
+    }
+  }
+
+  .header
+  {
+    @include background-size(cover);
+    @include transition ( background-image 0.4s );
+
+    position            : relative;
+    background-position : center;
+    z-index             : 2;
+    height              : 750px;
+
+    &[target="slider-1"]
+    {
+      background-image : url(/images/slider-1.png);
+    }
+
+    &[target="slider-2"]
+    {
+      background-image : url(/images/slider-2.png);
+    }
+
+    .content-container
+    {
+      position   : relative;
+      text-align : center;
+
+      .slider-1,
+      .slider-2
+      {
+        display  : none;
+        position : relative;
+        top      : 185px;
+
+        &.active
+        {
+          display: block;
+        }
+      }
+
+      .title
+      {
+        font-family : 'CeraRoundPro';
+        font-size   : 36px;
+        line-height : 54px;
+        color       : #ffffff;
+      }
+
+      .subtitle
+      {
+        font-family : 'CeraRoundPro';
+        font-size   : 24px;
+        line-height : 36px;
+        margin-top  : 40px;
+        color       : #ffffff;
+      }
+
+      button
+      {
+        @include border-radius(30px);
+        @include transition (background-color 0.4s);
+
+        font-family      : 'CeraRoundPro';
+        font-weight      : bold;
+        cursor           : pointer;
+        border           : none;
+        padding          : 0;
+        font-size        : 16px;
+        width            : 180px;
+        height           : 60px;
+        line-height      : 60px;
+        margin-top       : 47px;
+        color            : #ffffff;
+        background-color : #e70067;
+
+        &:hover
+        {
+          background-color : #c9005a;
+        }
+
+        &:focus
+        {
+          outline : none;
+        }
+      }
+
+      .controls
+      {
+        @include border-radius(30px);
+        @include display-flex;
+
+        position    : absolute;
+        left        : 50%;
+        bottom      : 47px;
+        margin-left : -36px;
+        width       : 72px;
+        height      : 16px;
+        border      : 1px solid #5489c3;
+
+        .button
+        {
+          cursor : pointer;
+          width  : 50%;
+          height : 100%;
+
+          div
+          {
+            width            : 16px;
+            height           : 1px;
+            margin-top       : 7px;
+            background-color : #5489c3;
+          }
+
+          &.active
+          {
+            div
+            {
+              background-color : #ffffff;
+            }
+          }
+
+          &:first-child
+          {
+            div
+            {
+              margin-left : 16px;
+            }
+          }
+
+          &:last-child
+          {
+            margin-left : 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .about
+  {
+    @include background-size(cover);
+
+    background-position : top;
+    background-image    : url(/images/about.png);
+
+    .content-container
+    {
+      @include display-flex;
+      @include align-items(center);
+      @include justify-content(center);
+
+      padding-top    : 155px;
+      padding-bottom : 180px;
+
+      .img
+      {
+        @include background-size(cover);
+
+        background-position : center;
+        height              : 620px;
+        width               : 300px;
+        background-image    : url(/images/mobile.png);
+      }
+
+      .text
+      {
+        font-family : 'CeraRoundPro';
+        font-weight : bold;
+        margin-left : 60px;
+        color       : #60759d;
+
+        .title
+        {
+          font-size   : 36px;
+          line-height : 54px;
+        }
+
+        .description
+        {
+          font-size   : 16px;
+          line-height : 24px;
+          margin-top  : 16px;
+
+          ul
+          {
+            padding-left : 17px;
+
+            li
+            {
+              margin-bottom : 16px;
+            }
+          }
+        }
+
+        button
+        {
+          @include border-radius(30px);
+          @include transition (background-color 0.4s);
+
+          font-family      : 'CeraRoundPro';
+          font-weight      : bold;
+          cursor           : pointer;
+          border           : none;
+          padding          : 0;
+          font-size        : 16px;
+          width            : 200px;
+          height           : 60px;
+          margin-top       : 20px;
+          line-height      : 60px;
+          color            : #ffffff;
+          background-color : #e70067;
+
+          &:hover
+          {
+            background-color : #c9005a;
+          }
+
+          &:focus
+          {
+            outline : none;
+          }
+        }
+      }
+    }
+  }
+}
